@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umowa Kupna-Sprzedaży</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Umowa Kupna-Sprzedaży</h1>
+        <p>Umowa kupna-sprzedaży e-papierosa Centaurusa N200 pomiędzy:</p>
+        <form id="contractForm">
+            <label for="seller">Sprzedający:</label>
+            <input type="text" id="seller" name="seller" value="Fabian" readonly>
+
+            <label for="buyer">Kupujący:</label>
+            <input type="text" id="buyer" name="buyer" value="Wiktoria Karpik" readonly>
+
+            <label for="date">Data zawarcia umowy:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="price">Cena:</label>
+            <input type="number" id="price" name="price" placeholder="Podaj cenę w PLN" required>
+
+            <p>Złóż podpis:</p>
+            <canvas id="signatureCanvas" width="500" height="200" style="border:1px solid #000;"></canvas>
+            <button type="button" id="clearSignature">Wyczyść Podpis</button>
+
+            <button type="submit">Zatwierdź Umowę</button>
+        </form>
+        <div id="confirmation" style="display:none;">
+            <h2>Umowa została zatwierdzona!</h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
