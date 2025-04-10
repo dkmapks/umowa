@@ -1,30 +1,20 @@
-const canvas = document.getElementById("signatureCanvas");
-const ctx = canvas.getContext("2d");
-let isDrawing = false;
-
-canvas.addEventListener("mousedown", () => isDrawing = true);
-canvas.addEventListener("mouseup", () => isDrawing = false);
-canvas.addEventListener("mousemove", draw);
-
-document.getElementById("clearSignature").addEventListener("click", () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
-
 document.getElementById("contractForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    const confirmation = document.getElementById("confirmation");
-    confirmation.style.display = "block";
+
+    // Pobranie danych z formularza
+    const seller = document.getElementById("seller").value;
+    const buyer = document.getElementById("buyer").value;
+    const item = document.getElementById("item").value;
+    const date = document.getElementById("date").value;
+    const price = document.getElementById("price").value;
+
+    // Wyświetlenie potwierdzenia
+    document.getElementById("confirmedSeller").textContent = seller;
+    document.getElementById("confirmedBuyer").textContent = buyer;
+    document.getElementById("confirmedItem").textContent = item;
+    document.getElementById("confirmedDate").textContent = date;
+    document.getElementById("confirmedPrice").textContent = price;
+
+    document.getElementById("confirmation").style.display = "block";
     this.style.display = "none";
 });
-
-function draw(event) {
-    if (!isDrawing) return;
-    ctx.lineWidth = 2;
-    ctx.lineCap = "round";
-    ctx.strokeStyle = "black";
-
-    ctx.lineTo(event.offsetX, event.offsetY);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(event.offsetX, event.offsetY);
-}
